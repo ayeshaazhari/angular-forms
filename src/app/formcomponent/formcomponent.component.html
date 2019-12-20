@@ -1,0 +1,70 @@
+<div class="container">
+<h1 class="text-center my-5"> Template form example</h1>
+<hr>
+<form #f="ngForm" (ngSubmit)="submit(f)" class="w-75 mx-auto">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text"
+      class="form-control w-50"
+       id="exampleInputEmail1"
+        placeholder="Enter Username"
+        pattern ="[a-z]*"
+        required
+        ngModel
+        minlength="3"
+        maxlength="10"
+        name="username"
+        #username='ngModel'
+        (change)="log(username)">
+        <div class="alert alert-danger" *ngIf= "username.touched && username.invalid">
+            <div *ngIf= "username.errors.required">
+                Username is required
+            </div>
+            <div *ngIf= "username.errors.minlength">
+                Username should have min {{ username.errors.minlength.requiredLength }} characters
+            </div>
+            <div class="alert alert-danger" *ngIf="username.errors.pattern">
+                user name shouls be smalller in case.
+            </div>
+        </div>
+
+
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+
+      <input type="password"
+      class="form-control w-50"
+      id="exampleInputPassword1"
+      placeholder="Password"
+      required
+      ngModel
+      name="password"
+      #password="ngModel"
+      minlength="5"
+      maxlength="10"
+      >
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      name="check"
+      #check1 = "ngModel"
+      ngModel
+      >
+      <label class="form-check-label" for="exampleCheck1">Accept Terms and Conditions</label>
+    </div>
+      <div ngModelgroup="contact">
+        <label>Addres: </label>
+              <textarea type="text" ngModel placeholder="Address 1" name="add1" #add1="ngModel" class="d-block w-50 my-2"></textarea>
+            <textarea type="text" placeholder="Address 2" ngModel name="add2" #add2="ngModel" class="d-block w-50"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary my-2"  [disabled]= "f.invalid">Submit</button>
+  </form>
+
+  <div *ngIf="data?.value">
+  {{ data.value | json }}
+  </div>
+  </div>
