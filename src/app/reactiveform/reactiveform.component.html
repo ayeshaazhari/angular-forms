@@ -25,6 +25,23 @@
     </div>
 
     <div class="form-group w-50">
+        <label for="email" class="required.field">Email</label>
+        <input
+        formControlName="email"
+        id="email"
+        type="email"
+        class="form-control">
+
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+                Email can not be empty
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group w-50">
         <label for="password" class="required.field">Password</label>
         <input
         formControlName="password"
@@ -33,7 +50,7 @@
         class="form-control">
 
         <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-            <div *ngIf="password.errors.required">
+            <div *ngIf="myform.get('password').errors.required">
                 Password can't be empty
             </div>
             <div *ngIf="password.errors.pattern">
@@ -44,35 +61,14 @@
                 Password should be atleast 5 characters
             </div>
         </div>
-    </div>
 
 
-    <div class="form-group w-50">
-        <label for="email" class="required.field">Password</label>
-        <input
-        formControlName="email"
-        id="email"
-        type="email"
-        class="form-control">
-
-        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-            <div *ngIf="myform.get('email').errors.required">
-                Password can't be empty
-            </div>
-            <div *ngIf="email.errors.pattern">
-                Password should be in caps
-            </div>
-
-            <div *ngIf="emil.errors.minlength">
-                Password should be atleast 5 characters
-            </div>
-        </div>
     </div>
 
 
 
     <div class="form-group w-50">
-        <label for="select" class="required.field">Password</label>
+        <label for="select" class="required.field">Category</label>
         <select
         formControlName="category"
         class="form-control">
@@ -89,19 +85,6 @@
             </div>
     </div>
 
-    <div class="form-group w-50">
-        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-            <div *ngIf="password.errors.required">
-                Password can't be empty
-            </div>
-            <div *ngIf="password.errors.pattern">
-                Password should be in caps
-            </div>
 
-            <div *ngIf="password.errors.minlength">
-                Password should be atleast 5 characters
-            </div>
-        </div>
-    </div>
 </form>
 </div>
